@@ -1,0 +1,53 @@
+<html>
+
+<head></head>
+
+<body style="background-color: wheat;">
+    <table style="width: 100%; height: 100%;">
+        <tr style="height: 30%; width: 100%; background-color: darksalmon;">
+            <td colspan="3" style="border-style: dotted; border-color: navy; ">
+                <marquee behavior="ALTERNATE"><b>WELCOME TO LANGUAGES PAGE!</b></marquee>
+            </td>
+        </tr>
+        <tr style="height: auto; width: 100%;">
+            <td align="left" style="width: 10%; border-style: solid;">
+                <h2>MENU</h2>
+                <ul>
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/Fibonacci?number=9">Fibonacci</a></li>
+                    <li><a href="/Capital?country=Portugal">Find capital</a></li>
+                    <li><a href="/NotExist">Not exist yet</a></li>
+                  </ul>                    
+            </td>
+            <td align="CENTER" style="width: auto;">
+                <p>
+                    under construction :(
+                </p>
+                <img src="https://i.imgur.com/sbfZ0p5.gif">
+            </td>
+            <td align="center" style="width: 20%; border-style: solid;">
+                <font size="6" style="background-color: forestgreen">
+                    <blink><i>You are visitor number: 15748</i></blink>
+                </font>
+            </td>
+        </tr>
+        <tr style="height: 5%; width: 100%;">
+            <td colspan="3" style="background-color: mediumblue;">
+                <marquee id="footer" behavior="scroll" style="color: white;">Good to have you here. -------------
+                </marquee>
+            </td>
+
+        </tr>
+    </table>
+</body>
+<script>
+    const footer = document.getElementById('footer');
+
+    var today = new Date();
+    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+    footer.innerText += date + ' ' + time;
+</script>
+
+</html>
