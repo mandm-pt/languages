@@ -6,14 +6,16 @@ This repository contains the same project implemented in different languages wit
 
 | Feature             |                   Done ? |
 | :------------------ | -----------------------: |
-| Data types          | :heavy_exclamation_mark: |
 | Conditional (if...) |       :heavy_check_mark: |
 | Loops               |       :heavy_check_mark: |
 | IO                  |       :heavy_check_mark: |
 | Exceptions          |       :heavy_check_mark: |
 | Reg. Expressions    |       :heavy_check_mark: |
 | Web client          |       :heavy_check_mark: |
-| Async               |       :heavy_check_mark: |
+| Async               | :heavy_exclamation_mark: |
+| 3rd party libraries |                          |
+| SQL lite connection |                          |
+
 
 ## Languages
 
