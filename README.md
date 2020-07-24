@@ -4,17 +4,19 @@ This repository contains the same project implemented in different languages wit
 
 ## Features/targets to explore
 
-| Feature             |                   Done ? |
-| :------------------ | -----------------------: |
-| Conditional (if...) |       :heavy_check_mark: |
-| Loops               |       :heavy_check_mark: |
-| IO                  |       :heavy_check_mark: |
-| Exceptions          |       :heavy_check_mark: |
-| Reg. Expressions    |       :heavy_check_mark: |
-| Web client          |       :heavy_check_mark: |
-| Async               | :heavy_exclamation_mark: |
-| 3rd party libraries |                          |
-| SQL lite connection |                          |
+| Feature                  |                   Done ? |
+| :----------------------- | -----------------------: |
+| Parse args               |       :heavy_check_mark: |
+| Conditional (if, switch) |       :heavy_check_mark: |
+| Loops                    |       :heavy_check_mark: |
+| IO                       |       :heavy_check_mark: |
+| Exceptions               |       :heavy_check_mark: |
+| Reg. Expressions         |       :heavy_check_mark: |
+| Web client               |       :heavy_check_mark: |
+| Async                    | :heavy_exclamation_mark: |
+| Lists, Dictionaries      |       :heavy_check_mark: |
+| 3rd party libraries      |       :heavy_check_mark: |
+| SQL lite connection      |       :heavy_check_mark: |
 
 
 ## Languages

@@ -1,6 +1,5 @@
 using System.IO;
 using System.Net;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -15,20 +14,16 @@ namespace languages.HttpModules
 
         Regex testRequest = new Regex(filesRegEx, RegexOptions.Compiled );
         public override bool CanProcess(HttpListenerRequest request)
-        {
-            return testRequest.IsMatch(request.Url.AbsolutePath);
-        }
+            => testRequest.IsMatch(request.Url.AbsolutePath);
 
-        protected override async Task ProcessRequest(HttpListenerRequest request, HttpListenerResponse response)
+        protected override async Task ProcessRequestAsync(HttpListenerRequest request, HttpListenerResponse response)
         {
             string fileName = request.Url.AbsolutePath;
 
             if (!File.Exists(searchPath + fileName))
             {
                 response.StatusCode = 404;
-                string responsePayload = string.Format(HttpUtils.ResponseTemplate, "Oops! File not found");
-                var responseBytes = Encoding.UTF8.GetBytes(responsePayload);
-                await response.OutputStream.WriteAsync(responseBytes);
+                await response.WriteResponseTextAsync("Oops! File not found");
                 return;
             }
 

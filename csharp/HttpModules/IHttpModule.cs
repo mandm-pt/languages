@@ -6,6 +6,6 @@ namespace languages.HttpModules
     internal interface IHttpModule
     {
         bool CanProcess(HttpListenerRequest request);
-        Task Process(HttpListenerRequest request, HttpListenerResponse response);
+        Task ProcessAsync(HttpListenerRequest request, HttpListenerResponse response);
     }
 }

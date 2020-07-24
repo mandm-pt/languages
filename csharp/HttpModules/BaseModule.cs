@@ -10,12 +10,12 @@ namespace languages.HttpModules
 
         public abstract bool CanProcess(HttpListenerRequest request);
 
-        public Task Process(HttpListenerRequest request, HttpListenerResponse response)
+        public Task ProcessAsync(HttpListenerRequest request, HttpListenerResponse response)
         {
-            Console.WriteLine(ModuleName);
-            return ProcessRequest(request, response);
+            Console.WriteLine($"{ModuleName}");
+            return ProcessRequestAsync(request, response);
         }
 
-        protected abstract Task ProcessRequest(HttpListenerRequest request, HttpListenerResponse response);
+        protected abstract Task ProcessRequestAsync(HttpListenerRequest request, HttpListenerResponse response);
     }
 }

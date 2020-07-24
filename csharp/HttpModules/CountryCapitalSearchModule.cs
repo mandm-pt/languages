@@ -1,9 +1,7 @@
 using System;
-using System.Dynamic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -21,11 +19,11 @@ namespace languages.HttpModules
             return request.Url.PathAndQuery.StartsWith(Path, StringComparison.InvariantCultureIgnoreCase);
         }
 
-        protected override async Task ProcessRequest(HttpListenerRequest request, HttpListenerResponse response)
+        protected override async Task ProcessRequestAsync(HttpListenerRequest request, HttpListenerResponse response)
         {
             if (string.IsNullOrWhiteSpace(request.QueryString.Get(paramName)))
             {
-                await PrintUsage(response);
+                await PrintUsageAsync(response);
                 return;
             }
 
@@ -39,21 +37,17 @@ namespace languages.HttpModules
                 var countryInfo = jsonDocument.RootElement.EnumerateArray().FirstOrDefault();
                 string capital = countryInfo.GetProperty("capital").GetString();
 
-                string responsePayload = string.Format(HttpUtils.ResponseTemplate, 
-                    $"<h1>Results</h1>We think that the capital of <b>{country}</b> is <b>{capital}</b>");
-
-                var responseBytes = Encoding.UTF8.GetBytes(responsePayload);
-                await response.OutputStream.WriteAsync(responseBytes);
+                await response.WriteResponseTextAsync(
+                    $"<h1>Results</h1>We think that the capital of <b>{country}</b> is <b>{capital}</b>"
+                );
             }
         }
 
-        private async Task PrintUsage(HttpListenerResponse response)
+        private async Task PrintUsageAsync(HttpListenerResponse response)
         {
-            string responsePayload = string.Format(HttpUtils.ResponseTemplate,
-                $"<h1>Parameter missing</h1><h2>Usage:</h2>{Path}?{paramName}=Portugal");
-
-            var responseBytes = Encoding.UTF8.GetBytes(responsePayload);
-            await response.OutputStream.WriteAsync(responseBytes);
+            await response.WriteResponseTextAsync(
+                $"<h1>Parameter missing</h1><h2>Usage:</h2>{Path}?{paramName}=Portugal"
+            );
         }
     }
 }
