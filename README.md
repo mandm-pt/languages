@@ -29,4 +29,4 @@ This repository contains the same project implemented in different languages wit
 | C        |    [link](https://www.gnu.org/software/gnu-c-manual/gnu-c-manual.html)     |                      |
 | Go       |                    [link](https://golang.org/ref/spec)                     |                      |
 | F#       | [link](https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/) |                      |
-| Java     |          [link](https://docs.oracle.com/javase/specs/index.html)           |                      |
+| Kotlin   |          [link](https://kotlinlang.org/spec/introduction.html)             | [navigate](/kotlin/) |
