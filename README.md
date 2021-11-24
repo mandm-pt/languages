@@ -27,6 +27,6 @@ This repository contains the same project implemented in different languages wit
 | Python   |                [link](https://docs.python.org/3/index.html)                |                      |
 | Rust     |       [link](https://doc.rust-lang.org/reference/introduction.html)        |                      |
 | C        |    [link](https://www.gnu.org/software/gnu-c-manual/gnu-c-manual.html)     |                      |
-| Go       |                    [link](https://golang.org/ref/spec)                     |                      |
+| Go       |                    [link](https://golang.org/ref/spec)                     | [navigate](/go/)     |
 | F#       | [link](https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/) |                      |
-| Kotlin   |          [link](https://kotlinlang.org/spec/introduction.html)             | [navigate](/kotlin/) |
+| Kotlin   |           [link](https://kotlinlang.org/spec/introduction.html)            | [navigate](/kotlin/) |

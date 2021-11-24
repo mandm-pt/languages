@@ -12,7 +12,7 @@ namespace languages.HttpModules
 
         public Task ProcessAsync(HttpListenerRequest request, HttpListenerResponse response)
         {
-            Console.WriteLine($"{ModuleName}");
+            Console.WriteLine($"Processing module {ModuleName}");
             return ProcessRequestAsync(request, response);
         }
 

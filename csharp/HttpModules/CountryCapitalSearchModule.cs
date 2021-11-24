@@ -10,7 +10,7 @@ namespace languages.HttpModules
     internal class CountryCapitalSearchModule : BaseModule
     {
         const string Path = "/Capital";
-        const string paramName = "country";
+        const string ParamName = "country";
 
         protected override string ModuleName => nameof(CountryCapitalSearchModule);
 
@@ -21,17 +21,17 @@ namespace languages.HttpModules
 
         protected override async Task ProcessRequestAsync(HttpListenerRequest request, HttpListenerResponse response)
         {
-            if (string.IsNullOrWhiteSpace(request.QueryString.Get(paramName)))
+            if (string.IsNullOrWhiteSpace(request.QueryString.Get(ParamName)))
             {
                 await PrintUsageAsync(response);
                 return;
             }
 
-            string country = request.QueryString.GetValues(paramName)[0];
+            string country = request.QueryString.GetValues(ParamName)[0];
 
             using (var client = new HttpClient())
             {
-                string webResponse = await client.GetStringAsync($"https://restcountries.eu/rest/v2/name/{country}");
+                string webResponse = await client.GetStringAsync($"https://restcountries.com/v2/name/{country}");
                 
                 var jsonDocument = JsonDocument.Parse(webResponse);
                 var countryInfo = jsonDocument.RootElement.EnumerateArray().FirstOrDefault();
@@ -46,7 +46,7 @@ namespace languages.HttpModules
         private async Task PrintUsageAsync(HttpListenerResponse response)
         {
             await response.WriteResponseTextAsync(
-                $"<h1>Parameter missing</h1><h2>Usage:</h2>{Path}?{paramName}=Portugal"
+                $"<h1>Parameter missing</h1><h2>Usage:</h2>{Path}?{ParamName}=Portugal"
             );
         }
     }

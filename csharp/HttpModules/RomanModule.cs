@@ -7,7 +7,7 @@ namespace languages.HttpModules
     internal class RomanModule : BaseModule
     {
         const string Path = "/Roman";
-        const string paramName = "symbol";
+        const string ParamName = "symbol";
 
         protected override string ModuleName => nameof(RomanModule);
 
@@ -18,13 +18,13 @@ namespace languages.HttpModules
 
         protected override async Task ProcessRequestAsync(HttpListenerRequest request, HttpListenerResponse response)
         {
-            if (string.IsNullOrWhiteSpace(request.QueryString.Get(paramName)))
+            if (string.IsNullOrWhiteSpace(request.QueryString.Get(ParamName)))
             {
                 await PrintUsageAsync(response);
                 return;
             }
 
-            string symbol = request.QueryString.GetValues(paramName)[0];
+            string symbol = request.QueryString.GetValues(ParamName)[0];
             int value;
 
             switch (symbol)
@@ -48,7 +48,7 @@ namespace languages.HttpModules
         private async Task PrintUsageAsync(HttpListenerResponse response)
         {
             await response.WriteResponseTextAsync(
-                $"<h1>Parameter missing</h1><h2>Usage:</h2>{Path}?{paramName}=X"
+                $"<h1>Parameter missing</h1><h2>Usage:</h2>{Path}?{ParamName}=X"
             );
         }
     }

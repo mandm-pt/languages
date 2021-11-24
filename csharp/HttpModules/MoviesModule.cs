@@ -8,7 +8,7 @@ namespace languages.HttpModules
     internal class MoviesModule : BaseModule
     {
         const string Path = "/Movies";
-        const string paramName = "id";
+        const string ParamName = "id";
 
         protected override string ModuleName => nameof(MoviesModule);
 
@@ -19,7 +19,7 @@ namespace languages.HttpModules
 
         protected override async Task ProcessRequestAsync(HttpListenerRequest request, HttpListenerResponse response)
         {
-            if (string.IsNullOrWhiteSpace(request.QueryString.Get(paramName)))
+            if (string.IsNullOrWhiteSpace(request.QueryString.Get(ParamName)))
             {
                 await PrintUsageAsync(response);
                 return;
@@ -27,7 +27,7 @@ namespace languages.HttpModules
 
             int id;
             string title;
-            bool success = int.TryParse(request.QueryString.GetValues(paramName)[0], out id);
+            bool success = int.TryParse(request.QueryString.GetValues(ParamName)[0], out id);
 
             if (!success)
                 throw new ApplicationException("You want explode the server! NOT TODAY!");
@@ -59,7 +59,7 @@ namespace languages.HttpModules
         private async Task PrintUsageAsync(HttpListenerResponse response)
         {
             await response.WriteResponseTextAsync(
-                $"<h1>Parameter missing</h1><h2>Usage:</h2>{Path}?{paramName}=1"
+                $"<h1>Parameter missing</h1><h2>Usage:</h2>{Path}?{ParamName}=1"
             );
         }
     }
