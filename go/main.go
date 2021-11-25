@@ -22,7 +22,7 @@ func main() {
 		port = userPort
 	}
 
-	supportedHandlers := []requestHandler{
+	supportedHandlers := []handlers.RequestHandler{
 		new(handlers.FileHandler),
 		&handlers.GuestBookHandler{}, // different way, same thing
 		new(handlers.RomanModule),
@@ -37,12 +37,7 @@ func main() {
 }
 
 type RoutingHandler struct {
-	Handlers []requestHandler
-}
-
-type requestHandler interface {
-	CanProcess(req *http.Request) bool
-	Process(res http.ResponseWriter, request *http.Request)
+	Handlers []handlers.RequestHandler
 }
 
 func (rh *RoutingHandler) ServeHTTP(res http.ResponseWriter, request *http.Request) {
@@ -60,7 +55,9 @@ func (rh *RoutingHandler) ServeHTTP(res http.ResponseWriter, request *http.Reque
 
 	for _, h := range rh.Handlers {
 		if h.CanProcess(request) {
-			h.Process(res, request)
+			hwrapper := new(handlers.LoggerHandler)
+			hwrapper.NextHandler = &h
+			hwrapper.Process(res, request)
 			return
 		}
 	}
