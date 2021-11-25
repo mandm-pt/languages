@@ -24,10 +24,11 @@ func main() {
 
 	supportedHandlers := []requestHandler{
 		new(handlers.FileHandler),
-		&handlers.GuestBookHandler{},
+		&handlers.GuestBookHandler{}, // different way, same thing
 		new(handlers.RomanModule),
 		new(handlers.CountryCapitalSearchHandler),
 		new(handlers.MoviesHandler),
+		new(handlers.UnhandledHandler),
 	}
 
 	handler := RoutingHandler{Handlers: supportedHandlers}
