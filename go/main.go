@@ -28,6 +28,7 @@ func main() {
 		new(handlers.RomanModule),
 		new(handlers.CountryCapitalSearchHandler),
 		new(handlers.MoviesHandler),
+		new(handlers.AsyncFileHandler),
 		new(handlers.UnhandledHandler),
 	}
 
